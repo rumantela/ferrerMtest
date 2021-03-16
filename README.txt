@@ -22,7 +22,7 @@ It is divided in classes:
 
 It has a unit test for each class. The deepest test is executed in driverDB,
 driverDB prevents SQL injections and wrong data format but it does not prevent from content itself.
-name and description fields can be record with any data that is going to recorded
+Name and description fields can be recorded with any data so the field is going to be recorded
 as string.
 Other test are softer, check comunications between classes.
 

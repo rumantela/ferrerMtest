@@ -2,6 +2,8 @@
 
 
 include "../productService.php";
+
+require_once "../../../config/config.php";
 /**
  * UnitTest for driverDB.
  */
@@ -9,8 +11,8 @@ include "../productService.php";
  class unitTestService{
 
     private $service;
-    public function __construct(){
-        $this->service=new productService();
+    public function __construct($param){
+        $this->service=new productService($param);
 
     }
     public function checkFields(){
@@ -32,6 +34,6 @@ include "../productService.php";
 
  }
 
-$test = new unitTestService();
+$test = new unitTestService($param);
 $test->checkFields();
 ?>

@@ -3,6 +3,9 @@
 include "../driverDB.php";
 /**
  * UnitTest for driverDB.
+ * Note. Test must be run first than adding registers to the table.
+ * Can be use to mock.
+ * uncomment to delete.
  */
 
  class unitTestDriver{
@@ -26,13 +29,88 @@ include "../driverDB.php";
         $methodType="INSERT";
         for($i=0;$i<20;$i++){
             $fields=[
-                "name"=>"producto".$i,
-                "description" => "INSERT INTO product(name) VALUES 'caca'",
-                "price"=>"cosa"
+                "name"=>"product".$i,
+                "description" => "Description ".$i,
+                "price"=>"10.32562"
             ];
-            $this->db->setSQL($methodType,$fields,null);
+            $this->db->setSQL($methodType,$fields,$i);
         }
+        $methodType="SELECT";
+        for($i=0;$i<20;$i++){
+            $this->db->setSQL($methodType,$fields,$i);
+        }
+        $methodType="UPDATE";
+        for($i=0;$i<20;$i++){
+            $fields=[
+                //"name"=>"product".($i+1),
+                "description" => "Description ".($i+1),
+                "price"=>"10.32562"
+            ];
+            $this->db->setSQL($methodType,$fields,$i);
+        }
+        /*
+        $methodType="DELETE";
+        for($i=0;$i<20;$i++){
+            $fields=[
+                "name"=>"product".$i,
+                "description" => "Description ".$i,
+                "price"=>"10.32562"
+            ];
+            $this->db->setSQL($methodType,$fields,$i);
+        }*/
         
+    }
+
+    function checkData(){
+        $id='19';
+        // data and injections
+        $methodType="INSERT";
+        $fields=[
+            "name"=>"1234",
+            "description" => "AND name='cosa' WHERE id='1' ",
+            "price"=>"10.32562"
+        ];
+        $this->db->setSQL($methodType,$fields,$id);
+        $methodType="INSERT";
+        $fields=[
+            "name"=>"product",
+            "description" => "Description ",
+            "price"=>"hola"
+        ];
+        $this->db->setSQL($methodType,$fields,$id);
+        // wrong id format
+        $methodType="SELECT";
+        $id='he';
+        $fields=[
+            "name"=>"product",
+            "description" => "Description ",
+            "price"=>"10.32562"
+        ];
+        $this->db->setSQL($methodType,$fields,$id);
+        $methodType="SELECT";
+        $id='12.1';
+        $fields=[
+            "name"=>"product",
+            "description" => "Description ",
+            "price"=>"10.32562"
+        ];
+        $this->db->setSQL($methodType,$fields,$id);
+        $methodType="UPDATE";
+        $id='he';
+        $fields=[
+            "name"=>"product",
+            "description" => "Description ",
+            "price"=>"10.32562"
+        ];
+        $this->db->setSQL($methodType,$fields,$id);
+        $methodType="UPDATE";
+        $id='12.1';
+        $fields=[
+            "name"=>"product",
+            "description" => "Description ",
+            "price"=>"10.32562"
+        ];
+        $this->db->setSQL($methodType,$fields,$id);
     }
     
 
@@ -40,4 +118,5 @@ include "../driverDB.php";
 
 $test = new unitTestDriver();
 $test->checkFields();
+$test->checkData();
 ?>

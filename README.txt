@@ -20,7 +20,11 @@ It is divided in classes:
     3- Repository+driver- Manages the database, based on PDO-mysqli
     4- Main resource (product.php)- It initializes an instance of the controller.
 
-It has a unit test for each class and an little frontend in html and js.
+It has a unit test for each class. The deepest test is executed in driverDB,
+driverDB prevents SQL injections and wrong data format but it does not prevent from content itself.
+name and description fields can be record with any data that is going to recorded
+as string.
+Other test are softer, check comunications between classes.
 
 To configure the database modify the file named "config.php".
 

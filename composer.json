@@ -1,0 +1,19 @@
+{
+    "name": "adolfosanchez/ferrer-mtest",
+    "description": "job selection test for Ferrer and masson",
+    "type": "project",
+    "require": {
+        "illuminate/database": "5.5",
+        "dompdf/dompdf": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adolfo Sanchez",
+            "email": "adolfosanchezlopez@gmail.com"
+        }
+    ]
+}
